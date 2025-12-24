@@ -1,0 +1,25 @@
+create database Store;
+
+use store;
+
+create table products(
+product_id varchar(5) not null,
+product_name varchar(15) not null,
+order_id varchar(5) not null
+);
+
+insert into products values ('PID01','medimix','PID02'),
+ ('PID02','Soap','OD_02'),
+  ('PID03','Powder','OD_03'),
+   ('PID04','Washing Liquid','OD_04'),
+    ('PID05','Vim Liquid','PID04'),
+    ('PID06','Ponds','PID03')
+    ;
+    
+    drop table products;
+    
+    select *from products;
+    
+    select p1.Product_Name 'Product_Name', p2.product_name 'category'    
+    from products p1,products p2
+    where p1.order_id= p2.product_id;
