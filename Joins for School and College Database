@@ -1,0 +1,57 @@
+create database Joins;
+use Joins;
+
+Create Table School(
+Sl_no int(4) not null,
+School_Name varchar(15) primary Key not null,
+Student_Name varchar(25)not null unique,
+Enrollment_ID Varchar(10) not null
+);
+
+Create Table College(
+Sl_no int(4) not null,
+College_Name varchar(15) primary Key not null,
+Student_Name varchar(25)not null unique,
+Enrollment_ID Varchar(10) not null
+);
+
+drop table college;
+
+insert into School values
+(1,'ABC School','Anitha','EID_001'),
+(2,'DEF School','Baghya','EID_002'),
+(3,'GHI School','Chitra','EID_003');
+
+insert into College values
+(1,'XYZ College','Anitha','EID_001'),
+(2,'ARM College','Baghya','EID_002'),
+(3,'SRM College','Chitra','EID_003'),
+(3,'VKC College','Darsha','EID_004');
+
+select * from school;
+select * from college;
+
+# --innerjoin---#
+select School.School_Name, school.Student_name, college.Enrollment_ID from School 
+inner join college
+on school.enrollment_ID = college.enrollment_ID;
+
+# --leftjoin---#
+select School.School_Name, school.Student_name, college.Enrollment_ID from School 
+left join college
+on school.enrollment_ID = college.enrollment_ID;
+
+# --rightjoin---#
+select School.School_Name, school.Student_name, college.Enrollment_ID from School 
+right join college
+on school.enrollment_ID = college.enrollment_ID;
+
+
+# --fulljoin---#
+select School.School_Name, school.Student_name, college.Enrollment_ID from School 
+left join college
+on school.enrollment_ID = college.enrollment_ID
+union
+select School.School_Name, school.Student_name, college.Enrollment_ID from School 
+right join college
+on school.enrollment_ID = college.enrollment_ID;
